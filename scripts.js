@@ -27,6 +27,7 @@ function voirReponses(){
 	let exists = false;
 	$('.voirReponses').click(function(e){
 		$('#questionIdObservatory').val(e.target.value.trim());
+		$('#reponsesQuestion .modal-title').html(e.target.value);
 		listReponses(e.target.value);
 		exists = false;
 	});
@@ -41,32 +42,37 @@ function voirReponses(){
 		                  	'observatoryId':$('#questionIdObservatory').val()
 					},
 					dataType: 'json'
-				})
+				}).done(function(){
+					postReponse();
+				});
 			});
+		}else{
+			postReponse();
 		}
 
-
-		jQuery(function($) {
-      $.ajax({
-                url: 'http://groups.cowaboo.net/2018/group07/public/api/entry',
-                type:'POST',
-                data: {
-		                  'secretKey': $("#secretKeyReponse").val(),
-		                  'observatoryId':$('#questionIdObservatory').val(),
-		                  'tags': $("#reponseValue").val(),
-		                  'value': $("#reponseValue").val()
-		              },
-                dataType: 'json'
-            }).done(function( arg ) {
-              alert("Votre réponse a bien été enregistrée !");
-              listReponses($('#questionIdObservatory').val());
-              $("#secretKeyReponse").val("");
-              $('#questionIdObservatory').val("");
-              $("#reponseValue").val("");
-            }).fail(function(arg){
-              alert("Votre clé secret est invalide !");
-            });
-        });
+		function postReponse(){
+			jQuery(function($) {
+	      $.ajax({
+	                url: 'http://groups.cowaboo.net/2018/group07/public/api/entry',
+	                type:'POST',
+	                data: {
+			                  'secretKey': $("#secretKeyReponse").val(),
+			                  'observatoryId':$('#questionIdObservatory').val(),
+			                  'tags': $("#reponseValue").val(),
+			                  'value': $("#reponseValue").val()
+			              },
+	                dataType: 'json'
+	            }).done(function( arg ) {
+	              alert("Votre réponse a bien été enregistrée !");
+	              listReponses($('#questionIdObservatory').val());
+	              $("#secretKeyReponse").val("");
+	              $('#questionIdObservatory').val("");
+	              $("#reponseValue").val("");
+	            }).fail(function(arg){
+	              alert("Votre clé secret est invalide !");
+	            });
+	        });
+		}
 	});
 }
 
