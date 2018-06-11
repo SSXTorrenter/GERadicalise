@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>GERadicalise</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="http://getbootstrap.com/docs/4.1/examples/navbar-static/navbar-top.css" rel="stylesheet">
+  </head>
+<style>
+  #votreQuestion .form-group button{
+    float: right;
+  }
+</style>
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <a class="navbar-brand" href="index.php">GERadicalise</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <div class="form-inline mt-2 mt-md-0">
+          <button class="btn btn-lg btn-info" role="button"  data-toggle="modal" data-target="#votreQuestion">Poser une question</button>
+
+        </div>
+      </div>
+    </nav>
+
+          <div class="modal fade" id="votreQuestion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Poser une question</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="form-group col-lg-12">
+                      <input type="text" class="form-control" name="secretKey" id="secretKey" placeholder="Clé secrète Cowaboo"required/>
+                    </div>
+                    <div class="form-group col-lg-12">
+                      <textarea class="form-control" name="question" id="questionValue" placeholder="Votre question" required></textarea>
+                    </div>
+                    <div class="form-group col-lg-12">
+                      <button type="button" id="poserQuestion" class="btn btn-success" data-dismiss="modal">Poser ma question</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    <main role="main" class="container">
+
+
+<style>
+	#questions .alert button{
+		float: right;
+	}
+	#questions .alert{
+		height: 55px;
+	}
+</style>
+
+		<div class="jumbotron">
+			<h1>Bienvenue sur GERadicalise</h1>
+			<p class="lead">Ici vous pouvez venir consulter des questions et réponses sur la radicalisation. Vous posez des questions si vous avez besoin de réponses ou répondre à des questions si vous pouvez aider.</p>
+		</div>
+	    <div id="questions">
+	      	
+		</div>
+
+		<div class="modal fade" id="reponsesQuestion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Poser une question</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  
+                </div>
+                <div class="modal-footer">
+                	<button class="btn btn-lg btn-success" role="button"  data-toggle="modal" data-target="#repondre">Répondre</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="modal fade" id="repondre" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Répondre à la question</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+				<div class="row">
+					<div class="form-group col-lg-12">
+						<input type="hidden" id="questionIdObservatory" value=""/>
+						<input type="text" class="form-control" name="secretKey" id="secretKeyReponse" placeholder="Clé secrète Cowaboo"required>
+					</div>
+					<div class="form-group col-lg-12">
+						<textarea class="form-control" name="reponse" id="reponseValue" placeholder="Votre réponse" required></textarea>
+					</div>
+            		<div class="form-group col-lg-12">
+		        		<button type="button" class="btn btn-success" id="posterMaReponse" data-dismiss="modal">Poster ma réponse</button>
+		        	</div>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+ </main>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script src="http://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js"></script>
+    <script src="./scripts.js"></script>
+  </body>
+</html>
